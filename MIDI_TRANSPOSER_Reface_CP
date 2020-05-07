@@ -1,0 +1,282 @@
+#include <MIDI.h>
+#include <SoftwareSerial.h>
+MIDI_CREATE_DEFAULT_INSTANCE();
+
+const int PIN_ANALOG_INPUT0 = 0;
+const int PIN_ANALOG_INPUT1 = 1;
+const int PIN_ANALOG_INPUT2 = 2;
+const int PIN_ANALOG_INPUT3 = 3;
+
+const int DIN_PIN2 = 2;
+const int DIN_PIN3 = 3;
+const int DIN_PIN4 = 4;
+const int DIN_PIN5 = 5;
+const int DIN_PIN6 = 6;
+
+int transpose = 0;
+int rotary = 0;
+
+void setup()
+{
+  pinMode( DIN_PIN2, INPUT_PULLUP );
+  pinMode( DIN_PIN3, INPUT_PULLUP );
+  pinMode( DIN_PIN4, INPUT_PULLUP );
+  pinMode( DIN_PIN5, INPUT_PULLUP );
+  pinMode( DIN_PIN6, INPUT_PULLUP );
+  Serial.begin(31250);
+//  Serial.begin(9600);
+  MIDI.begin(1); 
+}
+
+void loop()
+{
+  int value2;
+  int value3;
+  int value4;
+  int value5;
+  int value6;
+  int value7;
+  value2 = digitalRead(DIN_PIN2);
+  value3 = digitalRead(DIN_PIN3);
+  value4 = digitalRead(DIN_PIN4);
+  value5 = digitalRead(DIN_PIN5);
+  value6 = digitalRead(DIN_PIN6);
+
+  int a0 = analogRead( PIN_ANALOG_INPUT0 );
+  int a1 = analogRead( PIN_ANALOG_INPUT1 );
+  int a2 = analogRead( PIN_ANALOG_INPUT2 );
+  int a3 = analogRead( PIN_ANALOG_INPUT3 );
+//------------------
+  if(a0>=0 && a0<=125)
+  {
+    if (transpose != -12)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x34, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = -12;
+  }
+  if(a0>=126 && a0<=417)
+  {
+    if (transpose != -11)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x35, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = -11;
+  }
+  if(a0>=418 && a0<=685)
+  {
+    if (transpose != -10)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x36, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = -10;
+  }
+  if(a0>=686 && a0<=850)
+  {
+    if (transpose != -9)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x37, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = -9;
+  }
+  if(a0>=851 && a0<=968)
+  {
+    if (transpose != -8)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x38, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = -8;
+  }
+//-----
+  if(a1>=0 && a1<=125)
+  {
+    if (transpose != -7)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x39, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = -7;
+  }
+  if(a1>=126 && a1<=417)
+  {
+    if (transpose != -6)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x3A, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = -6;
+  }
+  if(a1>=418 && a1<=685)
+  {
+    if (transpose != -5)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x3B, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = -5;
+  }
+  if(a1>=686 && a1<=850)
+  {
+    if (transpose != -4)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x3C, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = -4;
+  }
+  if(a1>=851 && a1<=968)
+  {
+    if (transpose != -3)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x3D, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = -3;
+  }
+//-----
+  if(a2>=0 && a2<=125)
+  {
+    if (transpose != -2)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x3E, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = -2;
+  }
+  if(a2>=126 && a2<=417)
+  {
+    if (transpose != -1)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x3F, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = -1;
+  }
+  if(a2>=418 && a2<=685)
+  {
+    if (transpose != 0)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x40, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 0;
+  }
+  if(a2>=686 && a2<=850)
+  {
+    if (transpose != 1)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x41, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 1;
+  }
+  if(a2>=851 && a2<=968)
+  {
+    if (transpose != 2)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x42, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 2;
+  }
+//----
+  if(a3>=0 && a3<=125)
+  {
+    if (transpose != 3)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x43, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 3;
+  }
+  if(a3>=126 && a3<=417)
+  {
+    if (transpose != 4)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x44, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 4;
+  }
+  if(a3>=418 && a3<=685)
+  {
+    if (transpose != 5)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x45, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 5;
+  }
+  if(a3>=686 && a3<=850)
+  {
+    if (transpose != 6)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x46, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 6;
+  }
+  if(a3>=851 && a3<=968)
+  {
+    if (transpose != 7)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x47, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 7;
+  }
+
+//-----
+  if ( value2 == LOW )
+  {
+    if (transpose != 8)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x48, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 8;
+  }
+  if ( value3 == LOW )
+  {
+    if (transpose != 9)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x49, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 9;
+  }
+  if ( value4 == LOW )
+  {
+    if (transpose != 10)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x4A, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 10;
+  }
+  if ( value5 == LOW )
+  {
+    if (transpose != 11)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x4B, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 11;
+  }
+  if ( value6 == LOW )
+  {
+    if (transpose != 12)
+    {
+      byte data[] = {0xF0, 0x43, 0x10, 0x7F, 0x1C, 0x04, 0x00, 0x00, 0x07, 0x4C, 0xF7};
+      MIDI.sendSysEx(11,data,true);
+    }
+    transpose = 12;
+  }
+//  Serial.println( a0 );
+  delay(10);
+}
